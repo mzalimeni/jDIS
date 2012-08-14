@@ -19,6 +19,11 @@ public class Main {
 		//Create BufferedImage from command line filename and a copy to be drawn upon
 		BufferedImage img = null;
 		BufferedImage swappedImg = null;
+		
+		if(args.length != 1) {
+			System.err.println("ERROR: Single argument (the filename) not provided");
+			System.exit(1);
+		}
 		String filename = args[0].trim();
 		try {
 		    img = ImageIO.read(new File(filename));
@@ -49,7 +54,7 @@ public class Main {
 		    File outputfile = new File(filenameSwapped);
 		    ImageIO.write(swappedImg, extension.toLowerCase(), outputfile);
 		} catch (IOException e) {
-		    System.err.println("ERROR: Could not save file - is it a valid extension?");
+		    System.err.println("ERROR: Could not save file");
 		    System.exit(1);
 		}
 		
